@@ -12,6 +12,8 @@ Build-type:          Simple
 Cabal-version:       >=1.2
 Extra-source-files:  README.md, hulk.conf.example, txt/MOTD, txt/PREFACE
 
+-- TODO: replace version contraints
+
 Executable hulk
   Main-is:           Main.hs
   Other-Modules:     Control.Concurrent.Delay, Control.Monad.IO,
@@ -21,24 +23,24 @@ Executable hulk
                      Hulk.Server, Hulk.Types
   Ghc-options:       -threaded
   Hs-Source-Dirs:    src
-  Build-depends:     base >= 4 && <5
-                    ,cmdargs >= 0.6 && <0.10
-                    ,network >= 2.2 && < 2.4
-                    ,ConfigFile >= 1.0 && < 1.2
-                    ,unix >= 2.4 && < 2.6
-                    ,mtl >= 1.1 && < 2.1
-                    ,containers >= 0.3 && < 0.5
-                    ,irc >= 0.4 && < 0.6
-                    ,split >= 0.1 && < 0.2
-                    ,utf8-string >= 0.3 && < 0.4
-                    ,Crypto>=4.2 && < 4.3
-                    ,time >= 1.1 && < 1.5
-                    ,json >= 0.4 && < 0.6
-                    ,old-locale >= 1.0 && <1.1
-                    ,old-time >= 1.0 && <1.2
-                    ,directory >= 1.0 && < 1.2
-                    ,filepath >= 1.1 && < 1.4
-                    ,strict >= 0.3 && < 0.4
+  Build-depends:     base
+                    ,cmdargs
+                    ,network
+                    ,ConfigFile
+                    ,unix
+                    ,mtl 
+                    ,containers
+                    ,irc
+                    ,split
+                    ,utf8-string
+                    ,Crypto
+                    ,time
+                    ,json
+                    ,old-locale
+                    ,old-time 
+                    ,directory
+                    ,filepath 
+                    ,strict
 
 Executable hulk-generate-pass
   Main-is:          GeneratePass.hs
@@ -48,14 +50,14 @@ Executable hulk-generate-pass
                      Hulk.Event, Hulk.Log, Hulk.Options, Hulk.Providers,
                      Hulk.Server, Hulk.Types
   Hs-Source-Dirs:   src
-  Build-depends:    base >= 4 && <5
-                    ,cmdargs >= 0.6 && <0.10
-                    ,network >= 2.2 && < 2.4
-                    ,ConfigFile >= 1.0 && < 1.2
-                    ,unix >= 2.4 && < 2.6
-                    ,mtl >= 1.1 && < 2.1
-                    ,containers >= 0.3 && < 0.5
-                    ,irc >= 0.4 && < 0.6
-                    ,split >= 0.1 && < 0.2
-                    ,utf8-string >= 0.3 && <0.4
-                    ,Crypto>=4.2 && <4.3
+  Build-depends:    base
+                    ,cmdargs
+                    ,network
+                    ,ConfigFile
+                    ,unix
+                    ,mtl 
+                    ,containers
+                    ,irc 
+                    ,split
+                    ,utf8-string
+                    ,Crypto
