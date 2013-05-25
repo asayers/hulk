@@ -3,8 +3,8 @@ port = 6667
 hostname = myhostname
 
 [STRINGS]
-motd_file = txt/MOTD
-preface_file = txt/PREFACE
+motd_file = conf/MOTD
+preface_file = conf/PREFACE
 
 [AUTH]
 passwd_file = auth/passwd
@@ -14,5 +14,5 @@ passwd_key = auth/passwd-key
 data_dir=users/
 
 [LOGS]
-event_log=logs/
-channels=channel1 channel2
+event_log=logs
+channels=general meta
