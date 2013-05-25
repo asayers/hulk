@@ -14,6 +14,7 @@ import           Network
 import           Network.IRC
 import           System.IO
 import           System.IO.UTF8           as UTF8
+import           System.IO.Error          (catchIOError)
 
 import           Hulk.Client
 import           Hulk.Providers           ()
@@ -46,7 +47,7 @@ handleClient config handle env conn = do
       runLine x y = runHandle $ makeLine x y
   pinger <- forkIO $ forever $ do delayMinutes 2; runLine PINGPONG []
   fix $ \loop -> do
-    line <- catch (Right <$> UTF8.hGetLine handle)
+    line <- catchIOError (Right <$> UTF8.hGetLine handle)
                   (\e -> do killThread pinger
                             return $ Left e)
     case filter (not.newline) <$> line of
@@ -85,7 +86,7 @@ handleReplies handle reply = do
 -- | Send a message to a client.
 sendMessage :: Ref -> Message -> IO ()
 sendMessage (Ref handle) msg = do
-  catch (UTF8.hPutStrLn handle (encode msg ++ "\r"))
+  catchIOError (UTF8.hPutStrLn handle (encode msg ++ "\r"))
         (\_ -> hClose handle)
 
 -- | Add a line to the log file.
